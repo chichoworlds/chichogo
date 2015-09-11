@@ -31,18 +31,40 @@
     $("h1").fitText(
         1.2, {
             minFontSize: '35px',
-            maxFontSize: '65px'
+            maxFontSize: '75px'
         }
     );
 
     // Offset for Main Navigation
-    $('#mainNav').affix({
+    /*$('#mainNav').affix({
         offset: {
-            top: 100
+            top: 315
         }
-    })
+    })*/
 
     // Initialize WOW.js Scrolling Animations
     new WOW().init();
+    
+    var offsetAnuncios = $('.anuncios').offset()
+
+    $('#mainNav').hide();
+    //$("#mainNav").fadeIn('slow');
+   
+   $(window).scroll(function(){
+     console.log($("#page-top").scrollTop());
+     if($("#page-top").scrollTop() > offsetAnuncios.top){
+        $("#mainNav").stop().fadeIn(1000);
+     }else{
+       $("#mainNav").stop().fadeOut(100);
+     }
+    }).scroll();
+
+
 
 })(jQuery); // End of use strict
+
+
+
+
+
+
